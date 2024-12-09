@@ -1,0 +1,49 @@
+3 Write a program to accept an array of integer from the user through command line and 
+find prime numbers from the array in java 
+import java.util.Scanner;
+public class PrimeNumbersInArray {
+ public static void main(String[] args) {
+ Scanner scanner = new Scanner(System.in);
+ // Prompt the user to enter the size of the array
+ System.out.print("Enter the size of the array: ");
+ int size = scanner.nextInt();
+ 
+ int[] numbers = new int[size];
+ 
+ // Prompt the user to enter the elements of the array
+ System.out.println("Enter the elements of the array:");
+ for (int i = 0; i < size; i++) {
+ numbers[i] = scanner.nextInt();
+ }
+ // Find and display prime numbers in the array
+ System.out.println("Prime numbers in the array:");
+ for (int num : numbers) {
+ if (isPrime(num)) {
+ System.out.print(num + " ");
+ }
+ }
+ scanner.close();
+ }
+ // Method to check if a number is prime
+ public static boolean isPrime(int num) {
+ if (num <= 1) {
+ return false; // 1 and numbers less than 1 are not prime
+ }
+ for (int i = 2; i <= Math.sqrt(num); i++) {
+ if (num % i == 0) {
+ return false; // If divisible by any number other than 1 and itself, it's not prime
+ }
+ }
+ return true;
+ }
+}
+How the Program Works:
+1. Input: The program first asks the user to input the size of the array, then it prompts the 
+user to input the elements of the array.
+2. Prime Check: The isPrime method checks whether each element of the array is a 
+prime number.
+3. Output: The program prints out all the prime numbers from the array.
+Explanation:
+● The program reads an integer array from the user.
+● It checks each element to see if it’s prime.
+● Finally, it prints all prime numbers found in the array.

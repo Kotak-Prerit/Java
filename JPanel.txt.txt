@@ -1,0 +1,61 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class RadioButtonExample {
+    public static void main(String[] args) {
+        // Create the JFrame
+        JFrame frame = new JFrame("Identify Non-OOP Language");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 200);
+        frame.setLayout(new BorderLayout());
+
+        // Create a JPanel to hold the radio buttons
+        JPanel panel = new JPanel();
+
+        // Create radio buttons
+        JRadioButton cppButton = new JRadioButton("C++");
+        JRadioButton javaButton = new JRadioButton("Java");
+        JRadioButton pascalButton = new JRadioButton("Pascal");
+
+        // Group the radio buttons to allow only one selection
+        ButtonGroup group = new ButtonGroup();
+        group.add(cppButton);
+        group.add(javaButton);
+        group.add(pascalButton);
+
+        // Add radio buttons to the panel
+        panel.add(cppButton);
+        panel.add(javaButton);
+        panel.add(pascalButton);
+
+        // Add the panel to the frame
+        frame.add(panel, BorderLayout.CENTER);
+
+        // Create a label to display the result
+        JLabel resultLabel = new JLabel("Select a language and click Check!", JLabel.CENTER);
+        frame.add(resultLabel, BorderLayout.SOUTH);
+
+        // Create a button to check the selection
+        JButton checkButton = new JButton("Check");
+        frame.add(checkButton, BorderLayout.NORTH);
+
+        // Add ActionListener to the check button
+        checkButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (pascalButton.isSelected()) {
+                    resultLabel.setText("Correct! Pascal is not an OOP language.");
+                } else if (cppButton.isSelected() || javaButton.isSelected()) {
+                    resultLabel.setText("Wrong! Both C++ and Java are OOP languages.");
+                } else {
+                    resultLabel.setText("Please select an option.");
+                }
+            }
+        });
+
+        // Make the frame visible
+        frame.setVisible(true);
+    }
+}
